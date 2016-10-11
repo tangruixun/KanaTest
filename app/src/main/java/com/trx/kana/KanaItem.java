@@ -1,5 +1,7 @@
 package com.trx.kana;
 
+import java.util.Random;
+
 /**
  * Created by TRX on 10/11/2016.
  */
@@ -7,9 +9,9 @@ package com.trx.kana;
 public class KanaItem {
     String name;
     String imageName;
-    boolean isKatakana; // true: katakana false: hiragana
 
-    public String getImageName() {
+    public String getImageName(boolean isKatakana) {
+        // true: katakana false: hiragana
         String type;
         if (!isKatakana) {
             type = "hiragana";
@@ -19,18 +21,16 @@ public class KanaItem {
         return name+"_"+type+".png";
     }
 
-    public boolean isKatakana() {
-        return isKatakana;
-    }
-
-    public void setIsKatakana(boolean b) {
-        this.isKatakana = b;
+    public String getImageName() {
+        // get random item between hiragana and katakana
+        Random randomizer = new Random();
+        boolean  torf = randomizer.nextBoolean();
+        return getImageName(torf);
     }
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
