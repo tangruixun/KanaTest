@@ -18,7 +18,7 @@ public class KanaItem {
         } else {
             type = "katakana";
         }
-        return name+"_"+type+".png";
+        return name+"_"+type;
     }
 
     public String getImageName() {

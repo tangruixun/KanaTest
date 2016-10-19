@@ -26,13 +26,8 @@ public class StartActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent int_quiz = new Intent (thisActivity, QuizActivity.class);
-                    startActivity(int_quiz);
-                }
-            };
+            Intent int_quiz = new Intent (thisActivity, QuizActivity.class);
+            startActivity(int_quiz);
         }
     }
 }

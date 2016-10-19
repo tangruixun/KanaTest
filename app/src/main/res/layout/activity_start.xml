@@ -10,13 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.trx.kana.StartActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
     <Button
         android:id="@+id/startBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_button" />
+
+    <Button
+        android:id="@+id/startRBtnId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/start_button" />
