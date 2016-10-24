@@ -2,12 +2,14 @@ package com.trx.kana;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -35,7 +37,11 @@ public class QuizActivity extends AppCompatActivity {
 
     KanaItem correctItem, option1Item, option2Item, option3Item;
     ImageView qImage;
+    TextView timerView;
     int correctPos;
+    int second = 0;
+    int minute = 0;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,25 @@ public class QuizActivity extends AppCompatActivity {
         select2Btn = (Button)findViewById(R.id.select2id);
         select3Btn = (Button)findViewById(R.id.select3id);
         select4Btn = (Button)findViewById(R.id.select4id);
+
+        timerView = (TextView) findViewById(R.id.timerid);
+
+        handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                second++;
+                if (second < 60) {
+                    timerView.setText("00:" + second);
+                } else {
+                    minute = second / 60;
+                    second = second % 60;
+                    timerView.setText(minute+ ":" + second);
+                }
+                handler.postDelayed(this, 1000);
+            }
+        };
+        handler.postDelayed(runnable, 1000);
 
         String [] mergedList = (String[]) ArrayUtils.addAll(A_LIST, KA_LIST);
         //, SA_LIST, TA_LIST,

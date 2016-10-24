@@ -1,15 +1,16 @@
 package com.trx.kana;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class StartActivity extends AppCompatActivity {
 
-    Activity thisActivity = this;
+    Context thisContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,15 +19,15 @@ public class StartActivity extends AppCompatActivity {
 
         Button startBtn = (Button) findViewById(R.id.startBtnId);
         QuizClickListener quizClickListener = new QuizClickListener();
-        startBtn.setOnClickListener (quizClickListener);
-
+        startBtn.setOnClickListener(quizClickListener);
     }
 
     class QuizClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
-            Intent int_quiz = new Intent (thisActivity, QuizActivity.class);
+            Toast.makeText(thisContext, "test", Toast.LENGTH_SHORT).show();
+            Intent int_quiz = new Intent (thisContext, QuizActivity.class);
             startActivity(int_quiz);
         }
     }
